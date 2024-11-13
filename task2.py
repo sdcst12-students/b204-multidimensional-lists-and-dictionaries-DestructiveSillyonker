@@ -33,7 +33,16 @@ teamData = {
         'goalsAgainst' : 0
     },
     'BC' : {}
-}
+} 
+
+for i in games:
+    home = i['home']
+    away = i['away']
+    teamData.update({
+       
+
+    })
+
 
 def tests():
     assert teamData['BC']['gamesPlayed'] == 12
