@@ -35,16 +35,38 @@ teamData = {
     'BC' : {}
 } 
 
-for i in games:
-    home = i['home']
-    away = i['away']
-    teamData.update({
-       
-
-    })
+teamData = {team: {'gamesPlayed': 0, 'wins': 0, 'losses': 0, 'ties': 0, 'goalsFor': 0, 'goalsAgainst': 0} for team in teams}
 
 
-def tests():
-    assert teamData['BC']['gamesPlayed'] == 12
-    assert teamData['BC']['wins'] == 5
+for game in games:
+    home_team = game['home']
+    away_team = game['away']
+    home_score = game['homeScore']
+    away_score = game['awayScore']
+    
+    
+    teamData[home_team]['gamesPlayed'] += 1
+    teamData[away_team]['gamesPlayed'] += 1
+    
+    
+    teamData[home_team]['goalsFor'] += home_score
+    teamData[home_team]['goalsAgainst'] += away_score
+    teamData[away_team]['goalsFor'] += away_score
+    teamData[away_team]['goalsAgainst'] += home_score
+    
+    
+    if home_score > away_score:
+        teamData[home_team]['wins'] += 1
+        teamData[away_team]['losses'] += 1
+    elif home_score < away_score:
+        teamData[away_team]['wins'] += 1
+        teamData[home_team]['losses'] += 1
+    else:
+        teamData[home_team]['ties'] += 1
+        teamData[away_team]['ties'] += 1
 
+
+assert teamData['BC']['gamesPlayed'] == 12
+assert teamData['BC']['wins'] == 5
+	
+print(teamData)
