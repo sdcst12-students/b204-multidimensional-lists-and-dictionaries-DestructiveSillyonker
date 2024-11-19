@@ -31847,3 +31847,25 @@ pokemon = [
   }
 ]
 
+
+
+
+def Find():
+    print(20 * "-")
+    print(' Choose Id or Name ')
+    print('     (1 or 2)      ')
+    print(20 * "-")
+
+    i = input();
+    if i == '1':
+        Id = input('Enter the poke-Id: ')
+        for p in pokemon:
+            if p['id'] == Id:
+                print(f"I found yo dude {p['name']}")
+
+
+
+
+
+
+Find()
